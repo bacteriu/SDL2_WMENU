@@ -35,10 +35,10 @@ Tras declarar una o varias variables de tipo WMenu podrás utilizar las siguient
 			Esta función habilita o deshabilita un ítem de un menú según el parámetro de entrada st, si se establece como false el ítem aparecerá sombreado en el menú y se desplegarán los subitem que cuelguen a su derecha si los hay.
   -	int32_t getAble(int32_t item);
 			Esta función devuelve el estado del ítem solicitado si lo encuentra, si el ítem esta habilitado devuelve 1, si esta deshabilitado devuelve 0, y si el ítem no se encuentra devuelve -1.
-  -	void setData(int32_t item, int data);
-			Esta función estable el valor del campo data de la estructura Menu_t, el bit más bajo es usado para los ítem de tipo WM_TOGLE para indicar si el tendrán el tic activado o no.
-  -	int32_t getData(int32_t item);
-			Esta función devuelve el valor del campo data de la estructura Menu_t, el bit más bajo de este campo es usado para los ítem de tipo WM_TOGLE indicando si tiene el tic activado o no.
+  -	bool setData(int32_t item, int data);
+			Esta función estable el valor del campo data de la estructura Menu_t, el bit más bajo es usado para los ítem de tipo WM_TOGLE para indicar si el item tendrán el tic activado o no. Retorna true si se encuentra item y false si no se encuentra.
+  -	bool getData(int32_t item, int &data);
+			Esta función devuelve el valor del campo data de la estructura Menu_t en el parametro de salida data, el bit más bajo de este campo es usado para los ítem de tipo WM_TOGLE indicando si tiene el tic activado o no. Retorna true si el item es encontrado y el parametro de salida data es valido y false si item no es encontrado en este caso data contendra el valor previo a la llamada a esta función.
   -	int32_t setItemTitle(const char* ntitle, int32_t item);
 			Esta función estable el titulo o nombre de un ítem según el parámetro de entrada ntitle, y el ítem indicado por el parámetro de entrada ítem. La máxima longitud del campo será la indicada la constante MENU_MAX_LENG=64, si el título es de una longitud más larga solo se copiarán los primeros 62 caracteres y los dos últimos serán ".." para indicar que el titulo es mas largo. Esta función devuelve el número de caracteres copiados al título del ítem si se encuentra, si el ítem indicado no se encuentra devuelve -1.
   -	void setItemCallBAck(int32_t item, void (* calback)(Menu_t*));
