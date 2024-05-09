@@ -29,18 +29,21 @@ Tras declarar una o varias variables de tipo WMenu podrás utilizar las siguient
 			Esta función elimina un menú de la barra de menú seleccionado por el parámetro índex, devuelve 1 si lo ha eliminado y 0 si no se encontró el menú índex.
   -	SDL_Surface* setItemImage(int32_t item,SDL_Surface* sfc);
 			Esta función cambia el surface de la imagen de un ítem de tipo WM_IMAGE, los parámetros de entrada son el ítem que será buscado y sfc que es la superficie que le asignará al ítem, Devuelve el surface que tuviera ese ítem si se encuentra o NULL si no tenía ningún surface o no se encontró el ítem. Esta función ni ninguna otra libera el surface asignado a un ítem por lo que usted deberá hacerlo cuando corresponda.
-  -	int getBarHeight();
+  -	int32_t getBarHeight();
 			Esta función retorna la altura en pixeles de la barra de menú.
   -	void setAble(int32_t item, bool st);
 			Esta función habilita o deshabilita un ítem de un menú según el parámetro de entrada st, si se establece como false el ítem aparecerá sombreado en el menú y se desplegarán los subitem que cuelguen a su derecha si los hay.
   -	int32_t getAble(int32_t item);
-			Esta función devuelve el estado del ítem solicitado si lo encuentra, si el ítem esta habilitado devuelve 1, si esta deshabilitado devuelve 0, y si el ítem no se encuentra devuelve -1.
+			Esta función devuelve el estado del ítem solicitado si lo encuentra, si el ítem está habilitado devuelve 1, si esta deshabilitado devuelve 0, y si el ítem no se encuentra devuelve -1.
   -	bool setData(int32_t item, int data);
-			Esta función estable el valor del campo data de la estructura Menu_t, el bit más bajo es usado para los ítem de tipo WM_TOGLE para indicar si el item tendrán el tic activado o no. Retorna true si se encuentra item y false si no se encuentra.
+			Esta función estable el valor del campo data de la estructura Menu_t, el bit más bajo es usado para los ítems de tipo WM_TOGLE para indicar si el ítem tendrá el tic activado o no. Retorna true si se encuentra ítem y false si no se encuentra.
   -	bool getData(int32_t item, int &data);
-			Esta función devuelve el valor del campo data de la estructura Menu_t en el parametro de salida data, el bit más bajo de este campo es usado para los ítem de tipo WM_TOGLE indicando si tiene el tic activado o no. Retorna true si el item es encontrado y el parametro de salida data es valido y false si item no es encontrado en este caso data contendra el valor previo a la llamada a esta función.
+			Esta función devuelve el valor del campo data de la estructura Menu_t en el parámetro de salida data, el bit más bajo de este campo es usado para los ítem de tipo WM_TOGLE indicando si tiene el tic activado o no. Retorna true si el ítem es encontrado y el parámetro de salida data es válido y false si ítem no es encontrado en este caso data contendrá el valor previo a la llamada a esta función.
   -	int32_t setItemTitle(const char* ntitle, int32_t item);
-			Esta función estable el titulo o nombre de un ítem según el parámetro de entrada ntitle, y el ítem indicado por el parámetro de entrada ítem. La máxima longitud del campo será la indicada la constante MENU_MAX_LENG=64, si el título es de una longitud más larga solo se copiarán los primeros 62 caracteres y los dos últimos serán ".." para indicar que el titulo es mas largo. Esta función devuelve el número de caracteres copiados al título del ítem si se encuentra, si el ítem indicado no se encuentra devuelve -1.
+			Esta función estable el titulo o nombre de un ítem según el parámetro de entrada ntitle, y el ítem indicado por el parámetro de entrada ítem. La máxima longitud del campo será la indicada la constante MENU_MAX_LENG=64, si el título es de una longitud más larga solo se copiarán los primeros 62 caracteres y los dos últimos serán ".." para indicar que el título es más largo. Esta función devuelve el número de caracteres copiados al título del ítem si se encuentra, si el ítem indicado no se encuentra devuelve -1.
+  -	int32_t getItemTitle(int32_t item, char* buftitle, int32_t leng);
+			Esta función obtiene una copia del título de un ítem en buffer especificado por el parámetro de entrada buftitle con una longitud máxima de leng caracteres. Retorna la cantidad de caracteres copiados en buftitle o 0 en el caso de que buftitle=NULL, ítem no sea encontrado o leng sea igual a 0.
+  -	int32_t getItemType(int32_t item); Esta función retorna el tipo de un ítem o -1 si el ítem no ha sido encontrado. Los tipos de ítems pueden ser 0 para menú de la barra de menú, 1 para ítems de tipo WM_DEFAULT, 2 para ítems de tipo WM_TOGLE y 4 para ítems de tipo WM_IMAGE.
   -	void setItemCallBAck(int32_t item, void (* calback)(Menu_t*));
 			Esta función establece la función a ejecutar si un ítem terminal es picado, esto puede usarse para ejecutar funciones automáticamente cuando se pica un ítem de un menú.
   -	void drawMenu();
@@ -57,3 +60,11 @@ He de decir que esta librería la he realizado para mi uso personal y dada mi in
  Además, por esta misma razón seguramente estará llena de bug y falta de optimizaciones y seguro que se puede hacer mucho mejor, aunque para mí ha sido suficiente, siéntase libre de mejorarla o simplemente utilícela para aprender un poco sobre eventos SDL2, yo he aprendido y disfrutado mucho haciéndolo.
  
  Adjunto también un pequeño ejemplo que muestra cómo utilizarla.
+ 
+![Image_0009](https://github.com/bacteriu/SDL2_WMENU/assets/66980919/6b8be19f-7fe6-4fe1-91b6-6bb97191a8d9)
+
+![Image_0011](https://github.com/bacteriu/SDL2_WMENU/assets/66980919/3381b86b-6b9b-44d3-b9ed-f3493be5c1fd)
+
+¿Que falta por hacer?:
+
+Faltan muchísimas cosas que poco a poco terminaré implementando, al principio del fichero WMenu.cpp hay una lista de todas las funciones y opciones que me gustaría añadir algún día. Pero de momento he de darle uso para ver todos los posibles bugs que pueda observar para corregirlos, así como la posible variación de las funciones actuales y futuras que puedan ser necesarias para un cómodo uso de la librería.
