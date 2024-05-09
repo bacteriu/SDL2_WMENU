@@ -7,16 +7,19 @@ Una vez que puedas compilar usando las librerías SDL copia el archivo WMenu.cpp
 Una vez hecho esto añade el fichero WMenu.cpp y WMenu.h a tu proyecto y después declare una variable de tipo WMenu del siguiente modo:
 
 WMenu var(SDL_Window* wID,const char* FName,uint32_t h,uint32_t tc, uint32_t mc, uint32_t lc, uint32_t dc, uint32_t type=0);
+
 Los parámetros de la declaración son los siguientes:
 
-	wID: un identificador de la ventana obtenido con cuando se creó con la función SDL_CreateWindow()
+
+	wID: un identificador de la ventana obtenido con cuando se creó con la función SDL_CreateWindow().
 	FName: el nombre del font que utilizarán los menús el font debe contener el path donde esté ubicado.
-	h: Sera la altura en pixeles de la barra de menú, hay que tener en cuenta que el tamaño del font se obtendrá como h/1.75
+	h: Sera la altura en pixeles de la barra de menú, hay que tener en cuenta que el tamaño del font se obtendrá como h/1.75.
 	tac: Color del texto del menú.
 	mc: Color de la barra de menú y el fondo de todos los ítems.
 	lc: Color claro que se utilizará para el contorno de la barra de menú.
 	dc: Color oscuro que también se utilizará para el contorno de la barra de menú.
 	type: Tipo del marco del menú 0 para 3D y 1 para 2D con sombra.
+ 
 Tras declarar una o varias variables de tipo WMenu podrás utilizar las siguientes funciones:
   -	int32_t addMenu(const char name[]);
 			Esta función añade un menú a una barra de Menú en la parte superior de la ventana, name[] es el nombre del menú, retorna el índice del menú en la barra de menú
