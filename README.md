@@ -1,7 +1,11 @@
 Una clase hecha en SDL2 para añadir Menús a una ventana.
 ---------------------------------------------------------------------------------------------------
-Para utilizarla copia el archivo WMenu.cpp a tu directorio source y WMenu.h a tu directorio include.
+Para utilizarla tendrás que haber configurado tu compilador para poder usar las librerías SDL, SDL_IMAGE y SDL_TTF en tu proyecto, yo he seguido las instrucciones de "Lazy Foo'" en el siguiente enlace:
+	https://lazyfoo.net/tutorials/SDL/01_hello_SDL/index.php
+ 
+Una vez que puedas compilar usando las librerías SDL copia el archivo WMenu.cpp a tu directorio source y WMenu.h a tu directorio include.
 Una vez hecho esto añade el fichero WMenu.cpp y WMenu.h a tu proyecto y después declare una variable de tipo WMenu del siguiente modo:
+
 WMenu var(SDL_Window* wID,const char* FName,uint32_t h,uint32_t tc, uint32_t mc, uint32_t lc, uint32_t dc, uint32_t type=0);
 Los parámetros de la declaración son los siguientes:
 
