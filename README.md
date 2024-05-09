@@ -4,6 +4,7 @@ Para utilizarla copia el archivo WMenu.cpp a tu directorio source y WMenu.h a tu
 Una vez hecho esto añade el fichero WMenu.cpp y WMenu.h a tu proyecto y después declare una variable de tipo WMenu del siguiente modo:
 WMenu var(SDL_Window* wID,const char* FName,uint32_t h,uint32_t tc, uint32_t mc, uint32_t lc, uint32_t dc, uint32_t type=0);
 Los parámetros de la declaración son los siguientes:
+
 	wID: un identificador de la ventana obtenido con cuando se creó con la función SDL_CreateWindow()
 	FName: el nombre del font que utilizarán los menús el font debe contener el path donde esté ubicado.
 	h: Sera la altura en pixeles de la barra de menú, hay que tener en cuenta que el tamaño del font se obtendrá como h/1.75
