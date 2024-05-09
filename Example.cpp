@@ -3,6 +3,11 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include "WMenu.h"
+#ifdef __WIN32__ || __WIN64__
+    #define fontpath "C:/Windows/Fonts/"
+#else
+    #define fontpath "Font/"
+#endif // WIN32
 using namespace std;
 
 void exTogleItems(Menu_t* itemPtr){
@@ -62,7 +67,7 @@ int main( int argc, char* args[] )
         return 6;
     }
 
-    WMenu menuOne(hWindow,"Font/cambria.ttc",32,0x00000000,0xFFBDBDBD,0xFFFFFFFF,0XFF7B7B7B,0);
+    WMenu menuOne(hWindow,fontpath"cambria.ttc",32,0x00000000,0xFFBDBDBD,0xFFFFFFFF,0XFF7B7B7B,0);
     menuOne.addMenu("Salir");
     menuOne.addMenu("Acciones");
     menuOne.addMenu("Help");
