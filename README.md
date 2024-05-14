@@ -1,3 +1,4 @@
+<meta name="google-site-verification" content="0aC705WJQQ_RLLHJgyvl54IdyVyHqYJkt6hWuwNoAg0" />
 Una clase hecha en SDL2 para añadir Menús a una ventana.
 ---------------------------------------------------------------------------------------------------
 Para utilizarla tendrás que haber configurado tu compilador para poder usar las librerías SDL, SDL_IMAGE y SDL_TTF en tu proyecto, yo he seguido las instrucciones de "Lazy Foo'" en el siguiente enlace:
