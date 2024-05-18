@@ -1,6 +1,5 @@
 ## Una clase hecha en SDL2 para añadir Menús a una ventana.
-Para utilizarla tendrás que haber configurado tu compilador para poder usar las librerías SDL, SDL_IMAGE y SDL_TTF en tu proyecto, yo he seguido las instrucciones de "Lazy Foo'" en el siguiente enlace:
-	https://lazyfoo.net/tutorials/SDL/01_hello_SDL/index.php
+Para utilizarla tendrás que haber configurado tu compilador para poder usar las librerías SDL, SDL_IMAGE y SDL_TTF en tu proyecto, yo he seguido las instrucciones de [Lazy Foo'](https://lazyfoo.net/tutorials/SDL/01_hello_SDL/index.php) donde explica como configurar varios compiladores para Windows, linux o Mac.
  
 Una vez que puedas compilar usando las librerías SDL copia el archivo WMenu.cpp a tu directorio source y WMenu.h a tu directorio include.
 Una vez hecho esto añade el fichero WMenu.cpp y WMenu.h a tu proyecto y después declare una variable de tipo WMenu del siguiente modo:
@@ -9,18 +8,17 @@ WMenu var(SDL_Window* wID,const char* FName,uint32_t h,uint32_t tc, uint32_t mc,
 
 Los parámetros de la declaración son los siguientes:
 
-
-	wID: un identificador de la ventana obtenido con cuando se creó con la función SDL_CreateWindow().
-	FName: el nombre del font que utilizarán los menús el font debe contener el path donde esté ubicado.
-	h: Sera la altura en pixeles de la barra de menú, hay que tener en cuenta que el tamaño del font se obtendrá como h/1.75.
-	tac: Color del texto del menú.
-	mc: Color de la barra de menú y el fondo de todos los ítems.
-	lc: Color claro que se utilizará para el contorno de la barra de menú.
-	dc: Color oscuro que también se utilizará para el contorno de la barra de menú.
-	type: Tipo del marco del menú 0 para 3D y 1 para 2D con sombra.
- 
+  **wID**: un identificador de la ventana obtenido con cuando se creó con la función SDL_CreateWindow().  
+  **FName**: el nombre del font que utilizarán los menús el font debe contener el path donde esté ubicado.  
+  **h**: Sera la altura en pixeles de la barra de menú, hay que tener en cuenta que el tamaño del font se obtendrá como h/1.75.  
+  **tc**: Color del texto del menú.  
+  **mc**: Color de la barra de menú y el fondo de todos los ítems.  
+  **lc**: Color claro que se utilizará para el contorno de la barra de menú.  
+  **dc**: Color oscuro que también se utilizará para el contorno de la barra de menú.  
+  **type**: Tipo del marco del menú 0 para 3D y 1 para 2D con sombra.
+  
 Tras declarar una o varias variables de tipo WMenu podrás utilizar las siguientes funciones:
-  -	int32_t addMenu(const char name[]);
+  -	**int32_t addMenu(const char name[]);**
 			Esta función añade un menú a una barra de Menú en la parte superior de la ventana, name[] es el nombre del menú, retorna el índice del menú en la barra de menú
   -	int32_t addItem(int32_t parentitem, const char name[],int32_t item, int32_t type=1,SDL_Surface* sfc=NULL);
 			Esta función añade un ítem con el nombre name[] al menú seleccionado con el parámetro parentitem, ítem es el numero identificador que se usará posteriormente para detectar eventos sobre este ítem, este valor puede ser WMENU_ITEM_ANY en ese caso la función buscará un identificador libre que será devuelto por la función, type indica si el ítem puede ser WM_DEFAULT, WM_TOGLE y WM_IMAGE si es normal solo se muestra el nombre del ítem si es de tipo WM_TOGLE mostrará un rectángulo que puede alternarse con un tic y si es de tipo WM_IMAGE mostrará una imagen delante del nombre en este caso habrá que pasar el surface de la imagen en el último parámetro sfc.
@@ -61,12 +59,12 @@ Función fuera de clase.
 			Esta función dibuja todas las instancias de menú que haya declarado para lo cual recorre todas las instancias existentes y llamara a la función drawMenu() correspondiente a cada instancia.
 
 ---------------------------------------------------------------------------------------------------
-Advertencias:
+> ADVERTENCIAS:
 
-He de decir que esta librería la he realizado para mi uso personal y dada mi inexperiencia programando no hay ninguna garantía de que funcione correctamente en todos los casos.
+> He de decir que esta librería la he realizado para mi uso personal y dada mi inexperiencia programando no hay ninguna garantía de que funcione correctamente en todos los casos.
  Además, por esta misma razón seguramente estará llena de bug y falta de optimizaciones y seguro que se puede hacer mucho mejor, aunque para mí ha sido suficiente, siéntase libre de mejorarla o simplemente utilícela para aprender un poco sobre eventos SDL2, yo he aprendido y disfrutado mucho haciéndolo.
  
- Adjunto también un pequeño ejemplo que muestra cómo utilizarla.
+ Adjunto también un pequeño ejemplo que muestra cómo utilizar esta libreria.
  
 ![Image_0009](https://github.com/bacteriu/SDL2_WMENU/assets/66980919/6b8be19f-7fe6-4fe1-91b6-6bb97191a8d9)
 
