@@ -104,6 +104,8 @@
  * (V028):  Cambiado el nombre las siguientes funciones: addsubmenu=additem,
  * (V0.030):(09/05/2024) Añadida función bool getData(int32_t item, int data).
  * (V0.030):(09/05/2024) Añadida función int32_t getItemTigle(int32_t item, char* buffer, int32_t maxleng)
+ * (V0.030):(19/05/2024) Cambiada función setAble() para que devuelva true si el item es encontrado,
+ *                       false si no lo encuentra.
  ******************************************************************************************************
  * Versión: V0.030
  ******************************************************************************************************/
@@ -900,9 +902,11 @@ Menu_t* WMenu::itemsearch(Menu_t* ptr, int32_t item, int32_t type) {
  *  item: el item en el que se escribirá el estado enable/disable
  *  st:   el estado que obtendra el item tras esta llamada.
  ****************************************************************/
-void WMenu::setAble(int32_t item, bool st) {
+bool WMenu::setAble(int32_t item, bool st) {
     Menu_t* ptr= itemsearch(firstmenu,item);
-    ptr->enable=st;
+    if(ptr!=NULL)
+        ptr->enable=st;
+    return (ptr!=NULL);
 }
 
 /****************************************************************
