@@ -96,7 +96,7 @@ public:
     SDL_Surface* setItemImage(int32_t item,SDL_Surface* sfc);
     //Menu_t* getitem(int32_t item);
     int32_t getBarHeight();
-    void setAble(int32_t item, bool st);
+    bool setAble(int32_t item, bool st);
     int32_t getAble(int32_t item);
     bool setData(int32_t item, int data);
     bool getData(int32_t item, int &data);
