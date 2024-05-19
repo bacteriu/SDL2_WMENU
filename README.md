@@ -36,8 +36,8 @@ Tras declarar una o varias variables de tipo WMenu podrás utilizar las siguient
 			Esta función cambia el surface de la imagen de un ítem de tipo WM_IMAGE, los parámetros de entrada son el ítem que será buscado y sfc que es la superficie que le asignará al ítem, Devuelve el surface que tuviera ese ítem si se encuentra o NULL si no tenía ningún surface o no se encontró el ítem. Esta función ni ninguna otra libera el surface asignado a un ítem por lo que usted deberá hacerlo cuando corresponda.
   -	**int32_t getBarHeight();**
 			Esta función retorna la altura en pixeles de la barra de menú.
-  -	**void setAble(int32_t item, bool st);**
-			Esta función habilita o deshabilita un ítem de un menú según el parámetro de entrada st, si se establece como false el ítem aparecerá sombreado en el menú y se desplegarán los subitem que cuelguen a su derecha si los hay.
+  -	**bool setAble(int32_t item, bool st);**
+			Esta función habilita o deshabilita un ítem de un menú según el parámetro de entrada st, si se establece como false el ítem aparecerá sombreado en el menú y se desplegarán los subitem que cuelguen a su derecha si los hay. Devuelve true si encuentra el item y false si no lo encuentra.
   -	**int32_t getAble(int32_t item);**
 			Esta función devuelve el estado del ítem solicitado si lo encuentra, si el ítem está habilitado devuelve 1, si esta deshabilitado devuelve 0, y si el ítem no se encuentra devuelve -1.
   -	**bool setData(int32_t item, int data);**
@@ -60,12 +60,16 @@ Función fuera de clase.
 			Esta función dibuja todas las instancias de menú que haya declarado para lo cual recorre todas las instancias existentes y llamara a la función drawMenu() correspondiente a cada instancia.
 
 ---------------------------------------------------------------------------------------------------
+
+En el fichero **WMenu.h** hay un **#define __DEBUG** que se puede Comentar/Des comentar para eliminar o activar los mensajes de depuración. En ese mismo fichero (WMenu.h) hay también una constante **MENU_MAX_LENG=64** que determina la máxima longitud en caracteres de los nombres de los ítems, si necesita nombres más largos puede cambiarla hasta el máximo que necesite.
+
+---------------------------------------------------------------------------------------------------
 > ADVERTENCIAS:
 
 > He de decir que esta librería la he realizado para mi uso personal y dada mi inexperiencia programando no hay ninguna garantía de que funcione correctamente en todos los casos.
  Además, por esta misma razón seguramente estará llena de bug y falta de optimizaciones y seguro que se puede hacer mucho mejor, aunque para mí ha sido suficiente, siéntase libre de mejorarla o simplemente utilícela para aprender un poco sobre eventos SDL2, yo he aprendido y disfrutado mucho haciéndolo.
  
- Adjunto también un pequeño ejemplo que muestra cómo utilizar esta libreria.
+ El fichero Example.cpp es un pequeño programa de ejemplo que muestra cómo utilizar esta librería, las siguientes capturas han sido obtenidas de este programa de ejemplo.
  
 ![Image_0009](https://github.com/bacteriu/SDL2_WMENU/assets/66980919/6b8be19f-7fe6-4fe1-91b6-6bb97191a8d9)
 
