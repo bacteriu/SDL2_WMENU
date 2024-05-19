@@ -1,18 +1,15 @@
  /******************************************************************************************************
- * Versión: V0.027
+ * Versión: V0.030
  ******************************************************************************************************/
 
 #include <iostream>
-#include <windows.h>
 #include <stdio.h>
-#include <cmath>
 using namespace std;
 
 #ifdef __linux__
 	#include <SDL2/SDL.h>
 	#include <SDL2/SDL_image.h>
 	#include <SDL2/SDL_ttf.h>
-	#include <wiringPi.h>
 #elif _WIN32 | _WIN64
     #if _WIN32
         #define IS32BIT
@@ -22,13 +19,10 @@ using namespace std;
 	#include <SDL.h>
 	#include <SDL_image.h>
 	#include <SDL_ttf.h>
-	#define millis() 15
-	#define uint uint16_t
-#else
-#endif
+#endif // __linux__
 
 
-//#define __DEBUG         //Comentar esta definicion para eliminar los mensages de depuración
+//#define __DEBUG         //Comentar/Descomentar esta definicion para eliminar/activar los mensages de depuración
 #ifdef __DEBUG
     #define debug(...) printf("%03i.%03i: ",SDL_GetTicks()/1000,SDL_GetTicks()%1000);printf(__VA_ARGS__)
     #define debugnl(...) printf("%03i.%03i: ",SDL_GetTicks()/1000,SDL_GetTicks()%1000);printf(__VA_ARGS__);printf("\n\r");
@@ -94,7 +88,6 @@ public:
     int32_t delItems(int32_t item);
     int32_t delMenu(int32_t index);
     SDL_Surface* setItemImage(int32_t item,SDL_Surface* sfc);
-    //Menu_t* getitem(int32_t item);
     int32_t getBarHeight();
     bool setAble(int32_t item, bool st);
     int32_t getAble(int32_t item);
