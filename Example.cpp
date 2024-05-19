@@ -27,7 +27,7 @@ void exTogleItems(Menu_t* itemPtr){
 int main( int argc, char* args[] )
 {
     SDL_Surface* emoji[2]={NULL};
-
+    int32_t data=0;
     //Initialize SDL
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
 		printf( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
@@ -171,12 +171,17 @@ int main( int argc, char* args[] )
                         break;
                         default:
                             if (ev.user.code > 19) {
-                                cout<< "Obtenidos "<< menuOne.getItemTitle(ev.user.code,buffer,63)<<" caracteres. ";
-                                cout<<"Item: \""<< buffer <<"\", id: "<< ev.user.code << " piked"<< endl;
+                                //cout<< "Obtenidos "<< menuOne.getItemTitle(ev.user.code,buffer,63)<<" caracteres. ";
+                                menuOne.getItemTitle(ev.user.code,buffer,63);
+                                cout<<"Item: \""<< buffer <<"\", id: "<< ev.user.code << " piked";
                                 if (menuOne.getItemType(ev.user.code)==WM_IMAGE) {
                                     emojiIndex = (emojiIndex + 1) % 2;
                                     menuOne.setItemImage(ev.user.code,emoji[emojiIndex]);
+                                } else if (menuOne.getItemType(ev.user.code)==WM_TOGLE && menuOne.getData(ev.user.code,data)) {
+                                    cout<<" state: ";
+                                    (data&1)? cout<<"true":cout<<"false";
                                 }
+                                cout<<endl;
                             }
                     }
             }
